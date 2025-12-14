@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JPMorgan Chase - Login</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .logo img {
+      width: 180px;
+      margin-bottom: 30px;
+    }
+
+    .login-card {
+      background: white;
+      padding: 30px;
+      width: 320px;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .login-card h2 {
+      margin: 0;
+      text-align: center;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+
+    .input-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .input-field label {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .input-field input {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    .btn {
+      padding: 12px;
+      background: #003f73;
+      color: white;
+      font-size: 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      background: #002f56;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 15px;
+      text-align: center;
+      width: 100%;
+      font-size: 14px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo">
+    <img src="https://media.designrush.com/inspiration_images/757008/conversions/JPMorgan-Chase-Logo-SVG-desktop.jpg" alt="JPMorgan Chase Logo">
+  </div>
+
+  <div class="login-card">
+    <h2>Login</h2>
+
+    <div class="input-field">
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Enter your email" />
+    </div>
+
+    <div class="input-field">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter your password" />
+    </div>
+
+    <a href="dashboard.html" class="btn" style="display:block; text-align:center; text-decoration:none;">Sign In</a>
+  </div>
+
+  <footer>© JPMorgan Chase</footer>
+
+</body>
+</html>

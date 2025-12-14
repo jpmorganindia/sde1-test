@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JPMorgan Chase - Test</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: #f9fafb;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      color: #1f2937;
+    }
+
+    header {
+      background: #fff;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    header .logo img { width: 140px; }
+    header .user-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 16px;
+      color: #555;
+    }
+    header .user-info img {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+    }
+
+    main {
+      flex: 1;
+      padding: 40px;
+      max-width: 1100px;
+      margin: auto;
+      position: relative;
+    }
+
+    .layout {
+      display: flex;
+      gap: 30px;
+    }
+
+    .questions-card {
+      flex: 1;
+      background: #fff;
+      border-radius: 14px;
+      padding: 30px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+    .questions-card h3 {
+      font-size: 22px;
+      margin-bottom: 20px;
+      color: #003f73;
+    }
+    .question-block {
+      margin-bottom: 25px;
+    }
+    .question-block h4 {
+      font-size: 17px;
+      margin-bottom: 12px;
+    }
+    .options label {
+      display: block;
+      margin-bottom: 8px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .options label:hover { background: #f1f5f9; }
+
+    aside.timer-panel {
+      width: 240px;
+      background: #fff;
+      height: fit-content;
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+    .timer-box {
+      background: #e0f2fe;
+      padding: 15px;
+      text-align: center;
+      border-radius: 12px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #003f73;
+      margin-bottom: 20px;
+    }
+
+    .btn-submit {
+      padding: 14px 25px;
+      background: #003f73;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    footer {
+      background: #fff;
+      text-align: center;
+      padding: 15px 0;
+      color: #777;
+      font-size: 14px;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
+    }
+
+    #cameraPreview {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 220px;
+      height: 165px;
+      border: 2px solid #003f73;
+      border-radius: 12px;
+      background: #000;
+      object-fit: cover;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="https://media.designrush.com/inspiration_images/757008/conversions/JPMorgan-Chase-Logo-SVG-desktop.jpg">
+  </div>
+  <div class="user-info">
+    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+    <span>Bhumi Kumari</span>
+  </div>
+</header>
+
+<main>
+  <div class="layout">
+
+    <div class="questions-card">
+      <h3>Software Engineering Test - 20 Questions</h3>
+      <form id="testForm"></form>
+      <button id="submitBtn" class="btn-submit" onclick="window.location.href='index.html'">Submit Test</button>
+    </div>
+
+    <aside class="timer-panel">
+      <div class="timer-box" id="timer">40:00</div>
+      <p style="font-size:14px; color:#555; text-align:center;">Timer ends automatically when time is up.</p>
+    </aside>
+
+  </div>
+</main>
+
+<footer>© JPMorgan Chase</footer>
+
+<video id="cameraPreview" autoplay muted></video>
+
+<script>
+  const questions = [
+    {q: "In a distributed system using Paxos, which component is primarily responsible for proposing values?", a:["Acceptor","Proposer","Learner"]},
+    {q: "Which algorithm provides the best worst-case time complexity for finding strongly connected components?", a:["Kosaraju’s Algorithm","Tarjan’s Algorithm","Floyd–Warshall Algorithm"]},
+    {q: "In Java’s memory model, which guarantee is enforced by ‘volatile’ variables?", a:["Atomicity","Visibility of writes","Deadlock prevention"]},
+    {q: "Which technique minimizes write amplification in SSD-backed storage engines?", a:["WAL","LSM Trees","Copy-on-write B-Trees"]},
+    {q: "Which microservice pattern isolates failure with fallback routing?", a:["Circuit Breaker","Bulkhead","Sidecar"]},
+    {q: "Which database isolation level allows phantom reads?", a:["Serializable","Repeatable Read","Read Committed"]},
+    {q: "What scheduling does JVM rely on for thread preemption?", a:["Round Robin","OS Preemptive Scheduling","Cooperative only"]},
+    {q: "Which hashing technique minimizes clustering?", a:["Linear Probing","Double Hashing","Quadratic Probing"]},
+    {q: "Main drawback of eventual consistency?", a:["Reduced throughput","State divergence risk","No fault tolerance"]},
+    {q: "Redis sorted sets use which structure?", a:["Skip Lists","B-Trees","AVL Trees"]},
+    {q: "Main advantage of gRPC over REST?", a:["Human readability","Binary serialization + HTTP/2","Lower memory usage"]},
+    {q: "Which concurrency control avoids deadlocks entirely?", a:["2PL","Timestamp ordering","Optimistic locking"]},
+    {q: "Which ensures restart of failed containers in Kubernetes?", a:["ReplicaSet","Liveness Probe","Service Mesh"]},
+    {q: "Optimal MST algorithm for dense graphs?", a:["Kruskal","Prim (F-heap)","Borůvka"]},
+    {q: "‘Stop-the-world’ means?", a:["Thread prioritization","Pausing application threads","Heap compaction only"]},
+    {q: "Technique to reduce contention in counters?", a:["AtomicInteger","Striped counters","Semaphore locks"]},
+    {q: "CAP says which cannot be guaranteed together?", a:["Availability+Durability","Consistency+Partition Tolerance","Latency+Ordering"]},
+    {q: "Zookeeper uses which protocol?", a:["Raft","Zab","EPaxos"]},
+    {q: "Major advantage of zero-copy I/O?", a:["Better caching","Avoiding kernel/user copying","Higher compression"]},
+    {q: "Technique to ensure minimal lock contention in queues?", a:["Coarse lock","Lock-free algorithms","Spin locks"]}
+  ];
+
+  const form = document.getElementById("testForm");
+  questions.forEach((q,i)=>{
+    const block = document.createElement("div");
+    block.className = "question-block";
+    block.innerHTML = `<h4>${i+1}. ${q.q}</h4>`;
+
+    const optDiv = document.createElement("div");
+    optDiv.className = "options";
+
+    q.a.forEach((opt,idx)=>{
+      const letter = String.fromCharCode(65+idx);
+      optDiv.innerHTML += `<label><input type='radio' name='q${i+1}' value='${letter}'> ${opt}</label>`;
+    });
+
+    block.appendChild(optDiv);
+    form.appendChild(block);
+  });
+
+  let time = 40*60;
+  const timerEl = document.getElementById('timer');
+  setInterval(()=>{
+    let m = String(Math.floor(time/60)).padStart(2,'0');
+    let s = String(time%60).padStart(2,'0');
+    timerEl.textContent = `${m}:${s}`;
+    if(time>0) time--;
+  },1000);
+
+  const video = document.getElementById('cameraPreview');
+  navigator.mediaDevices.getUserMedia({ video: true })
+    .then(stream => video.srcObject = stream);
+</script>
+
+</body>
+</html>
